@@ -1,0 +1,153 @@
+/* Normalize */
+
+ul {
+    list-style-type: none;
+    margin-before: 0;
+    margin-after: 0;
+    margin-start: 0px;
+    margin-end: 0px;
+    padding-start: 0;
+}
+
+ul,
+li {
+    list-style-type: none;
+}
+
+#root { /* Specific to this exercise implementation. */
+    max-width: 600px;
+    margin: 4em auto 0 auto;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Segmented Control
+
+  Displayed as a table layout with evenly spaced cells and two rows,
+  one for the text tabs and one for the moving bar below them.
+*/
+
+.seg-control,
+.seg-tab {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.seg-control {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    padding: 0;
+}
+
+.seg-tabs,
+.seg-line {
+    display: table-row;
+    width: 100%;
+    padding: 0;
+}
+
+.seg-tab,
+.seg-bar {
+    display: inline-block;
+    text-align: center;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #A7A7A7;
+    display: table-cell;
+    margin: 0;
+    padding: 0;
+}
+
+.seg-tab:hover {
+    color: #898989;
+}
+
+.seg-tab,
+.seg-line {
+    opacity: 0;
+    animation: fadeIn ease-out 1;
+    animation-fill-mode: forwards;
+    animation-duration: 0.7s;
+}
+
+/* Intro animation delay */
+
+.seg-tab:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.seg-tab:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.seg-tab:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.seg-tab:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+.seg-tab:nth-child(6) {
+    animation-delay: 1.0s;
+}
+
+.seg-tab:last-child {
+    margin-right: 0;
+}
+
+.seg-tab input {
+    position: absolute;
+    opacity: 0;
+}
+
+.seg-tab input:focus + label {
+    border-color: rgba(74, 144, 226, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(74, 144, 226, 0.6);
+    outline: 0 none;
+}
+
+.seg-tab label {
+    display: block;
+    margin: 0 -1px -1px 0;
+    padding: 1em .25em;
+    text-align: center;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.segtab[aria-selected="true"],
+.seg-tab.selected {
+    color: #4A90E2;
+}
+
+/* Segmented Control Bar */
+
+.seg-line {
+    background-color: #D3D3D3;
+    height: 2px;
+}
+
+.seg-bar.selected {
+    will-change: transform;
+    visibility: visible;
+    background-color: #4A90E2;
+    height: 4px;
+    position: relative;
+    top: -1px;
+    transform: translateX(0);
+    box-shadow: 0 2px #4A90E2;
+    transition: transform 0.3s ease-in-out;
+}
